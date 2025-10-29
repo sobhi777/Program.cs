@@ -1,0 +1,39 @@
+﻿@model IEnumerable<InsuranceMVC.Models.Insuree>
+
+@{
+    ViewData["Title"] = "All Insurees";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<p>
+    <a href="/Insuree/Create" class="btn btn-success">Add New Insuree</a>
+</p>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Car</th>
+            <th>Tickets</th>
+            <th>DUI</th>
+            <th>Full Coverage</th>
+            <th>Quote</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var i in Model)
+        {
+            <tr>
+                <td>@i.FirstName @i.LastName</td>
+                <td>@i.Age</td>
+                <td>@i.CarYear @i.CarMake @i.CarModel</td>
+                <td>@i.SpeedingTickets</td>
+                <td>@(i.HasDUI ? "Yes" : "No")</td>
+                <td>@(i.FullCoverage ? "Yes" : "No")</td>
+                <td>@i.Quote.ToString("C")</td>
+            </tr>
+        }
+    </tbody>
+</table>
